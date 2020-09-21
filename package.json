@@ -1,0 +1,30 @@
+{
+  "name": "@janbican/enigma",
+  "version": "1.0.0",
+  "description": "Emulates Enigma machine encrypting/decrypting",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janbican/enigma.git"
+  },
+  "keywords": [
+    "enigma",
+    "enigma-machine",
+    "cryptography",
+    "encrypt",
+    "decrypt"
+  ],
+  "author": "Jan Bičan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janbican/enigma/issues"
+  },
+  "homepage": "https://github.com/janbican/enigma#readme"
+}
