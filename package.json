@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Emulates Enigma machine encrypting/decrypting",
   "main": "index.js",
-  "type": "module",
   "directories": {
     "lib": "lib"
   },
@@ -28,6 +27,9 @@
   },
   "homepage": "https://github.com/janbican/enigma#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-jest": "^26.3.0",
     "jest": "^26.4.2"
   }
 }
