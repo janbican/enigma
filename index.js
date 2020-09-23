@@ -1,10 +1,6 @@
-import { Rotor, rotors } from './lib/rotors.js'
-import { Reflector, reflectors } from './lib/reflectors.js'
+const RotorSlot = require('./lib/rotorslot')
+const { rotors } = require('./lib/rotors')
 
-const rotor = rotors.I
-console.log(rotor.alphabet, rotor.notchPosition)
-console.log(rotor instanceof Rotor)
+const rotorSlot = new RotorSlot(rotors.I)
 
-const reflector = reflectors.C
-console.log(reflector.alphabet)
-console.log(reflector instanceof Reflector)
+console.log(rotorSlot.offset)

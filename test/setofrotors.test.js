@@ -1,5 +1,5 @@
-import { SetOfRotors } from '.././lib/setofrotors'
-import { rotors } from '.././lib/rotors'
+const SetOfRotors = require('./../lib/setofrotors')
+const { rotors } = require('./../lib/rotors')
 
 describe('SetOfRotors', () => {
   let setOfRotors

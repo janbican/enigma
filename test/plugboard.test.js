@@ -1,5 +1,5 @@
-import { Plugboard } from './../lib/plugboard'
-import { alphabet } from './../lib/alphabet'
+const Plugboard = require('./../lib/plugboard')
+const { plainAlphabet } = require('./../lib/alphabet')
 
 describe('Plugboard', () => {
   let plugboard
@@ -9,7 +9,7 @@ describe('Plugboard', () => {
   })
 
   test('plain alphabet when created', () => {
-    expect(plugboard.alphabet).toBe(alphabet)
+    expect(plugboard.alphabet).toBe(plainAlphabet)
   })
 
   test('alphabet changes when pair is plugged', () => {
@@ -34,7 +34,7 @@ describe('Plugboard', () => {
   test('alphabet changes when letter is unplugged', () => {
     plugboard.plug('PT')
     plugboard.unplug('P')
-    expect(plugboard.alphabet).toBe(alphabet)
+    expect(plugboard.alphabet).toBe(plainAlphabet)
   })
 
   test('alphabet is plain when unplugAll called', () => {
@@ -42,7 +42,7 @@ describe('Plugboard', () => {
     plugboard.plug('PT')
     plugboard.plug('XQ')
     plugboard.unplugAll()
-    expect(plugboard.alphabet).toBe(alphabet)
+    expect(plugboard.alphabet).toBe(plainAlphabet)
   })
 
   test('throws error when trying to plug nothing', () => {
