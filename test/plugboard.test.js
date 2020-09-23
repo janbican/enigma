@@ -1,5 +1,5 @@
-import { Plugboard } from './../lib/plugboard.js'
-import { alphabet } from './../lib/alphabet.js'
+import { Plugboard } from './../lib/plugboard'
+import { alphabet } from './../lib/alphabet'
 
 describe('Plugboard', () => {
   let plugboard
