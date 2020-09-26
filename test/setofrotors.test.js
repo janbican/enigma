@@ -19,6 +19,8 @@ describe('SetOfRotors', () => {
   test('offsets are set correctly', () => {
     setOfRotors.offsets = 'GFR'
     expect(setOfRotors.offsets).toBe('GFR')
+    setOfRotors.offsets = 'rtv'
+    expect(setOfRotors.offsets).toBe('RTV')
   })
 
   test('invalid offsets format throws error', () => {
@@ -40,6 +42,8 @@ describe('SetOfRotors', () => {
   test('ringSettings are set correctly', () => {
     setOfRotors.ringSettings = 'XDW'
     expect(setOfRotors.ringSettings).toBe('XDW')
+    setOfRotors.ringSettings = 'afc'
+    expect(setOfRotors.ringSettings).toBe('AFC')
   })
 
   test('invalid ringSettings format throws error', () => {
@@ -95,5 +99,22 @@ describe('SetOfRotors', () => {
     setOfRotors.offsets = 'QEV'
     setOfRotors.move()
     expect(setOfRotors.offsets).toBe('RFW')
+  })
+
+  test('replace rotor doesn\'t change settings', () => {
+    setOfRotors.offsets = 'ABC'
+    setOfRotors.ringSettings = 'ZTR'
+    setOfRotors.middleRotor = rotors.IV
+    expect(setOfRotors.offsets).toBe('ABC')
+    expect(setOfRotors.ringSettings).toBe('ZTR')
+  })
+
+  test('set rotor', () => {
+    setOfRotors.rightRotor = rotors.V
+    expect(setOfRotors.rightRotor).toBe(rotors.V)
+  })
+
+  test('set rotor already used throws error', () => {
+    expect(() => setOfRotors.middleRotor = rotors.III).toThrow(Error)
   })
 })
