@@ -49,6 +49,10 @@ describe('Enigma', () => {
     expect(enigma.convert('A')).toBe('D')
   })
 
+  test('convert returns correct letter (lowercase)', () => {
+    expect(enigma.convert('a')).toBe('D')
+  })
+
   test('convert invalid letter throws error', () => {
     expect(() => enigma.convert('*')).toThrow(Error)
     expect(() => enigma.convert('')).toThrow(Error)
@@ -61,12 +65,44 @@ describe('Enigma', () => {
     expect(enigma.convertText('THISISENIGMA')).toBe('VQWLKDQDWIIK')
   })
 
+  test('convertText encrypts text (lowercase)', () => {
+    expect(enigma.convertText('thisisenigma')).toBe('VQWLKDQDWIIK')
+  })
+
   test('convertText decrypts cipher', () => {
     expect(enigma.convertText('VQWLKDQDWIIK')).toBe('THISISENIGMA')
+  })
+
+  test('convertText decrypts cipher (lowercase)', () => {
+    expect(enigma.convertText('vqwlkdqdwiik')).toBe('THISISENIGMA')
+  })
+
+  test('convertText normalizes text before conversion', () => {
+    expect(enigma.convertText('THíS IS 1ěNIGMA@& ')).toBe('VQWLKDQDWIIK')
   })
 
   test('convert moves offset', () => {
     enigma.convert('A')
     expect(enigma.offsets).toBe('ADV')
+  })
+
+  test('convertText encrypts text with ringSettings', () => {
+    enigma.ringSettings = 'CPX'
+    expect(enigma.convertText('THISISENIGMA')).toBe('CPQOVWQTSRYP')
+  })
+
+  test('convertText decrypts text with ringSettings', () => {
+    enigma.ringSettings = 'CPX'
+    expect(enigma.convertText('CPQOVWQTSRYP')).toBe('THISISENIGMA')
+  })
+
+  test('covertText encrypts long text', () => {
+    enigma.ringSettings = 'ABC'
+    expect(enigma.convertText('PBQPVYJEJXVXXJVOYBWVWXBPMCYBATWANHPRAKYUKRRAXJPHGLJAMTMXNTMPKLBQWHXNGNPGANPHGPHCDUMFQJQHEUNRMDLFFEHYVTYZKTTPDJIUFAYXBMTENGRYUQRCAANFTHHGTHJMFEVKOPDXTSBVZGFMXXAVTPRPHWMKMEJKZPIHERBMTLLDJBXMQZDYOHFMFQJDTPOWGFKZJTTDXQUDGKRLYUJIZCYWRXSVLLYBPEFBDBIBEDNHGEJUWLZDRIVTIFMDQDRRXKTQCRJQANAPCPSQPVPUHIRFFODCXPYLYAQNDTSZLETMBOPXUENLKMWSPDPNDPUELCZYTRCAUBRBGATKOXXXSXZWZQUBUYWDVGIZXTMSKISMVIBKYQQGZEFZRHGJXEVSXFGXRGKDSBADWJNIFNBOKSEOYPVKRDVSBLMVJPJRHABPUUUWNQRGSDLOJSNZXVSQVAPLNLYDQHGWFKMUNVINO'))
+      .toBe('SEDACMASSAUTTORTORLACINIAEFFICITURCURSUSUTURNASEDTEMPUSNIBHSITAMETERATTEMPORCONDIMENTUMALIQUAMPELLENTESQUEESTATLOREMGRAVIDABIBENDUMQUISQUECONDIMENTUMQUISTORTORSITAMETEFFICITURSUSPENDISSEVELLACUSEUENIMLUCTUSCONVALLISSITAMETINNULLADUISQUAMQUAMPHARETRACONSECTETURPURUSNONLACINIAMOLLISNIBHMAECENASAQUAMMAURISNULLAMSEMPERTORTORJUSTOACALIQUAMJUSTOVARIUACMAURISACLACUSLIGULAAENEANQUISQUAMMALESUADABLANDITLOREMNECCURSUSVELITPRAESENTFRINGILLASEMNECVELITRUTRUMINBLANDITMASSASODALESMAURISEGET')
+  })
+
+  test('pairs letters', () => {
+    console.log(enigma.pairs)
   })
 })

@@ -17,6 +17,11 @@ describe('Plugboard', () => {
     expect(plugboard.alphabet).toBe('ZBCDEFGHIJKLMNOPQRSTUVWXYA')
   })
 
+  test('alphabet changes when pair is plugged (lowercase)', () => {
+    plugboard.plug('xt')
+    expect(plugboard.alphabet).toBe('ABCDEFGHIJKLMNOPQRSXUVWTYZ')
+  })
+
   test('alphabet changes when more pairs are plugged', () => {
     plugboard.plug('MA')
     plugboard.plug('PT')
@@ -24,7 +29,7 @@ describe('Plugboard', () => {
     expect(plugboard.alphabet).toBe('MBCDEFGHIJKLANOTXRSPUVWQYZ')
   })
 
-  test('plugs changes when letter plugged again', () => {
+  test('plugs changes when letter is plugged again', () => {
     plugboard.plug('GH')
     plugboard.plug('LA')
     plugboard.plug('GL')
@@ -55,5 +60,25 @@ describe('Plugboard', () => {
 
   test('throws error when trying to unplug invalid letter', () => {
     expect(() => plugboard.unplug(1)).toThrow(Error)
+  })
+
+  test('pairs (empty) returns empty array', () => {
+    expect(plugboard.pairs).toEqual([])
+  })
+
+  test('pairs returns array of pairs', () => {
+    plugboard.plug('AM')
+    plugboard.plug('PT')
+    plugboard.plug('QX')
+    expect(plugboard.pairs).toEqual(['AM', 'PT', 'QX'])
+  })
+
+  test('set pairs', () => {
+    plugboard.pairs = ['AM', 'PT', 'QX']
+    expect(plugboard.alphabet).toBe('MBCDEFGHIJKLANOTXRSPUVWQYZ')
+  })
+
+  test('set pairs, invalid pair throws error', () => {
+    expect(() => plugboard.pairs = ['A2']).toThrow(Error)
   })
 })
