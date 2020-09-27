@@ -1,6 +1,6 @@
 # About
 
-Library emulating Enigma machine encrypting/decrypting in Javascript.
+Library emulating Enigma machine encryption/decryption in Javascript.
 
 It is used for encrypting and decrypting messages.
 
@@ -51,3 +51,8 @@ console.log(cipher)
 ```
 
 API specification in lib/enigma.js
+
+# Notes
+
+- valid alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+- convertText(text) normalizes text (deletes spaces, interpunction, diacritics)
